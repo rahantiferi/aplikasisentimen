@@ -15,7 +15,7 @@ def clean_text(text):
 # Fungsi untuk memuat dan melatih model
 @st.cache
 def load_and_train_model():
-    data = pd.read_excel('dataset.xlsx')
+    data = pd.read_excel('static/cleaned_dataset-_1_.xlsx')
     data['clean_text'] = data['text'].apply(clean_text)
     vectorizer = TfidfVectorizer(max_features=500)
     X = vectorizer.fit_transform(data['clean_text']).toarray()
