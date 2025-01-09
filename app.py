@@ -14,7 +14,7 @@ def clean_text(text):
     return text
 
 # Fungsi untuk memuat dan melatih model
-@st.experimental_memo
+@st.cache_data
 def load_and_train_model():
     try:
         # Memuat dataset
