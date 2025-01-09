@@ -7,6 +7,9 @@ import os
 
 # Fungsi membersihkan teks
 def clean_text(text):
+    # Pastikan teks adalah string
+    if not isinstance(text, str):
+        text = str(text)  # Konversi non-string (termasuk NaN) menjadi string
     text = text.lower()
     text = re.sub(r'[^\w\s]', '', text)
     text = re.sub(r'\d+', '', text)
@@ -24,6 +27,9 @@ def load_and_train_model():
             return None, None
 
         data = pd.read_excel(file_path)
+        
+        # Pastikan kolom 'text' tidak berisi nilai NaN atau non-string
+        data['text'] = data['text'].fillna('')  # Isi NaN dengan string kosong
         data['clean_text'] = data['text'].apply(clean_text)
 
         # Membuat fitur TF-IDF dan melatih model
