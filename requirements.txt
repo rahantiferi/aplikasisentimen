@@ -2,4 +2,8 @@ Flask
 pandas
 scikit-learn
 numpy
+streamlit
+pip
+matplotlip
+seaborn
 openpyxl
